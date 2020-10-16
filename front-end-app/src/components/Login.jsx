@@ -1,6 +1,7 @@
 import React from "react";
 import { axiosWithAuth } from "../api/axiosWithAuth";
 import { Button, Form, FormGroup } from 'reactstrap';
+import { axiosWithAuth } from '../api/axiosWithAuth'
 
 class Login extends React.Component {
   state = {
@@ -22,11 +23,11 @@ class Login extends React.Component {
   login = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .post("/api/login", this.state.credentials)
+      .post("/login", this.state.credentials)
       .then((res) => {
         console.log('login: res: ', res);
         localStorage.setItem("token", res.data.payload);
-        this.props.history.push("/bubble_page");
+        this.props.history.push("/user_page");
       })
       .catch((err) => {
         if (err.response) {
