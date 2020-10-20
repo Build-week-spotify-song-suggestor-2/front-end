@@ -10,6 +10,8 @@ const logo = require("../img/suggestify-logo.png");
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [menuStatus, setMenuStatus] = useState(false);
+
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setIsLoggedIn(true);
@@ -36,7 +38,7 @@ const Header = () => {
                   <div style={{ position: "absolute" }}>
                     <div className="links-wrapper">
                       <NavLink to="/favorites">Favorites</NavLink>
-                      <NavLink to="/myprofile">Profile</NavLink>
+                      <NavLink to="/my_profile">Profile</NavLink>
                       <NavLink
                         to="/"
                         onClick={() => localStorage.removeItem("token")}
@@ -49,8 +51,8 @@ const Header = () => {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <NavLink to="/Login">Login</NavLink>
-                <NavLink to="/NewUser">Sign Up</NavLink>
+                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/new_user">Sign Up</NavLink>
               </React.Fragment>
             )}
           </div>
