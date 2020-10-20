@@ -1,48 +1,55 @@
 import React from "react";
 import { useForm } from 'react-hook-form'
-import { Button, Form, FormGroup } from 'reactstrap'
+import { Button, Form, InputGroup } from 'reactstrap'
 import { postData } from '../actions/postAction'
+import { FormInput } from './FormInput'
 
 const Login = () => {
 
 
   const { register, handleSubmit, watch, errors } = useForm()
 
-  handleSubmit = data => {
+  const login = data => {
     console.log('Login submit: data: ', data)
     postData(data)
   }
 
-  console.log(watch('username'))
-  console.log(watch('password'))
+  //uncomment these if you want to watch input in console
+  // console.log(watch('username'))
+  // console.log(watch('password'))
 
   return (
     
-      <div>
-        <Form className='login' onSubmit={handleSubmit}>
+    <div>
 
-          <FormGroup>
-            <input
-              placeholder='Username'
-              type="text"
-              name="username"
-              ref={register({ required: true })}
-            />
-            {errors.username && <span>Username is required</span>}
-          </FormGroup>
+      <Form className='login' onSubmit={handleSubmit(login)}>
 
-          <FormGroup>
-            <input
-              placeholder='Password'
-              type="password"
-              name="password"
-              ref={register({ required: true })}
-            />
-            {errors.password && <span>Password is required</span>}
-          </FormGroup>
-          <Button>Log in</Button>
-        </Form>
-      </div>
+        <InputGroup>
+          <FormInput 
+            type='text'
+            id='username'
+            name='username'
+            label='Username'
+            register={register}
+            errors={errors.username}
+          />
+        </InputGroup>
+
+        <InputGroup>
+          <FormInput 
+            type='password'
+            id='password'
+            name='password'
+            label='Password'
+            register={register}
+            errors={errors.password}
+          />
+        </InputGroup>
+
+        <Button>Log in</Button>
+
+      </Form>
+     </div>
 
 
 

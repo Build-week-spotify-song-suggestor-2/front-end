@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from "react";
-
 import { NavLink, Link } from "react-router-dom";
-import Form from "./Form";
-
+import SearchForm from "./SearchForm";
 import '../SCSS/Header.scss';
 
 const logo = require("../img/suggestify-logo.png");
 
-const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const Nav = () => {
+
+
   const [menuStatus, setMenuStatus] = useState(false);
-
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setIsLoggedIn(true);
-    }
-  }, []);
-
   const toggleMenu = () => setMenuStatus(!menuStatus);
 
   return (
@@ -31,8 +22,7 @@ const Header = () => {
         <h1 className="title">Suggestify</h1>
         <div className="header-links-container">
           <div className="header-links">
-            {isLoggedIn ? (
-              <React.Fragment>
+    
                 <i onClick={toggleMenu} class="fas fa-user-circle"></i>
                 {menuStatus && (
                   <div style={{ position: "absolute" }}>
@@ -48,18 +38,16 @@ const Header = () => {
                     </div>
                   </div>
                 )}
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                <NavLink to="/login">Login</NavLink>
-                <NavLink to="/new_user">Sign Up</NavLink>
-              </React.Fragment>
-            )}
+              </div>
+            </div>
           </div>
+          <div className="header-title"></div>
         </div>
-      </div>
-      <div className="header-title"></div>
-    </div>
-  );
-};
-export default Header;
+
+      )
+                
+                
+}
+
+
+export default Nav

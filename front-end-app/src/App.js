@@ -5,7 +5,7 @@ import Home from './components/Home'
 import NewUser from './components/NewUser';
 import PrivateRoute from './components/PrivateRoute'
 import Login from './components/Login'
-import Header from './components/Header'
+import Header from './components/Nav'
 
 const App = () => {
 

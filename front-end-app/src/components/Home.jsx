@@ -1,21 +1,20 @@
 import React from "react";
-
-import Header from "./Header";
-import Form from "./Form";
+import Nav from "./Nav";
+import SearchForm from "./SearchForm";
 
 import "../SCSS/Home.scss";
 
 const Home = () => {
   return (
     <div style={{ height: "100%" }}>
-      <Header />
+      <Nav />
       <div className="home-full-bg">
         <div className="home-container">
           <div className="home-image">
             <div className="home-image-inner-container">
               <h3 className="subtitle">Find New Music...</h3>
-              <div className="search-form">
-                <Form />
+              <div className="search-SearchForm">
+                <SearchForm />
               </div>
             </div>
           </div>

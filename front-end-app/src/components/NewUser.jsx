@@ -1,124 +1,84 @@
-import React, { useState } from "react";
+import React from "react";
+import { yupResolver } from '@hookform/resolvers'
+import { Form, InputGroup, Button } from 'reactstrap'
+import { FormInput } from './FormInput'
+import { postData } from '../actions/postAction'
+import { useHistory } from 'react-router-dom'
 import * as yup from "yup";
 
-export default function NewUser() {
 
-  
-  // variable holding the default empty data
-  const defaultUserData = { username: "", password: "" };
+const formSchema = yup.object().shape({
 
-  // declared state to hold data
-  const [user, setUser] = useState(defaultUserData);
-  const [errors, setErrors] = useState({});
-  const [disableSubmit, setDisableSubmit] = useState(false);
+  password: yup
+    .string()
+    .max(18, 'Password must be shorter than 18 characters')
+    .required("Required"),
 
-  // Function to handle the text field change to set to the user state
-  const handleChange = (e) => {
-    const userData = { ...user, [e.target.name]: e.target.value };
+  username: yup
+    .string()
+    .max(10, 'Username must not be longer than 8 characters')
+    .required("Required")
 
-    setUser(userData);
-  };
+});
 
-  // Form schema to be used for form validation
-  const formSchema = yup.object().shape({
-    password: yup.string().required("Please enter a password."),
-    username: yup.string().required("Please enter a username."),
-  });
 
-  // Form to catch any errors if the form did not validated
-  const formErrors = (e) => {
-    let allErrors = { ...errors };
-    for (const userData in user) {
-      yup
-        .reach(formSchema, userData)
-        .validate(user[userData])
-        .then((valid) => {
-          allErrors[`${userData}`] = "";
-        })
-        .catch((err) => {
-          allErrors[`${userData}`] = err.errors[0];
-        });
-    }
 
-    setErrors(allErrors);
-  };
+const NewUser = () => {
 
-  // Function to handle the form submission
-  const handleSubmission = (e) => {
-    e.preventDefault();
+  const { push } = useHistory();
 
-    formErrors();
+  const { register, handleSubmit, watch, errors } = useForm({
+    mode: 'onblur',
+    resolver: yupResolver(formSchema)
+  })
 
-    // Check if the form passes the validation
-    formSchema.isValid(user).then((valid) => {
-      console.log("is my form valid?", valid);
+  //uncomment these if you want to watch input in console
+  // console.log(watch(username))
+  // console.log(watch(password))
 
-      if (valid) {
-        // Ensure to eliminate all errors if form is valid
-        setErrors({});
-        // Submit the form
-        console.log("Account created", user);
-        // Clear the form
-        setUser(defaultUserData);
-      } 
-    });
-  };
+
+  const submitNewUser = async data => {
+    console.log('NewUser Form: newUser data: ', data)
+    postData(data)
+    await push('/')//will replace path with a profile page once the component is built
+  }
+ 
 
   return (
-    <div className="form-container">
+
+  <div>
       <h3>Create Account</h3>
 
-      <form onSubmit={handleSubmission}>
-        <label
-          htmlFor="username"
-          className={`${
-            errors.username !== "" && errors.username !== undefined
-              ? "invalid"
-              : "valid"
-          }`}
-        >
-          Username: 
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={user.username}
-            onChange={handleChange}
-          />
-        </label>
+    <Form className='form-container' onSubmit={handleSubmit(submitNewUser)} className='form'>
 
-        <label
-          htmlFor="password"
-          className={`${
-            errors.password !== "" && errors.password !== undefined
-              ? "invalid"
-              : "valid"
-          }`}
-        >
-          Password:
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={user.password}
-            onChange={handleChange}
-          />
-        </label>
+      <InputGroup>
+       <FormInput 
+          type='text'
+          id='username'
+          name='username'
+          label='Username'
+          register={register}
+          errors={errors.username}
+        />
+      </InputGroup>
 
-        <input type="submit" value="Log in" disabled={disableSubmit} />
-      </form>
- 
-      {Object.keys(errors).length > 0 && (
-        <div className="errors">
-          {Object.keys(errors).map((key) => (
-            <p value={key} key={key}>
-              {errors[key]}
-            </p>
-          ))}
-        </div>
-      )}
-    </div>
+      <InputGroup>
+        <FormInput 
+          type='password'
+          id='password'
+          name='password'
+          label='Password'
+          register={register}
+          errors={errors.password}
+        />
+      </InputGroup>
+      <Button>Create</Button>
+    </Form>
+
+  </div>
   );
 }
+
+export default NewUser
 
 

@@ -1,9 +1,10 @@
-import { axiosWithAuth } from '../api/axiosWithAuth';
+import axios from 'axios'
 import {
   POST_DATA_START,
   POST_DATA_SUCCESS,
   POST_DATA_FAIL
 } from './actionTypes'
+
 
 
 export const postData = data => dispatch => {
@@ -12,7 +13,7 @@ export const postData = data => dispatch => {
 
   setTimeout(() => {
     
-    axiosWithAuth()
+    axios
       .post('url/url', data)
 
       .then(response => {
