@@ -1,26 +1,11 @@
 import React from "react";
-import { yupResolver } from '@hookform/resolvers'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { Form, InputGroup, Button } from 'reactstrap'
 import { FormInput } from './FormInput'
 import { postData } from '../actions/postAction'
 import { useHistory } from 'react-router-dom'
-import * as yup from "yup";
-
-
-const formSchema = yup.object().shape({
-
-  password: yup
-    .string()
-    .max(18, 'Password must be shorter than 18 characters')
-    .required("Required"),
-
-  username: yup
-    .string()
-    .max(10, 'Username must not be longer than 8 characters')
-    .required("Required")
-
-});
-
+import { useForm } from 'react-hook-form'
+import { formSchema } from '../utilities/formSchema'
 
 
 const NewUser = () => {

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import SearchForm from "./SearchForm";
 import '../SCSS/Header.scss';
 
 const logo = require("../img/suggestify-logo.png");

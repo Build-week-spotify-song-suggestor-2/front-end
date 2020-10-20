@@ -1,11 +1,17 @@
 import React from "react";
 import { useForm } from 'react-hook-form'
 import { FormInput } from './FormInput'
+import { Form, Button } from 'reactstrap'
+import { formSchema } from '../utilities/formSchema'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 
 const SearchForm = props => {
 
-  const { register, handleSubmit, watch, errors } = useForm()
+  const { register, handleSubmit, watch, errors } = useForm({
+    mode: 'onBlur',
+    resolver: yupResolver(formSchema)
+  })
 
   //uncomment this if you want to watch text in console
   //console.log(watch('search'))
