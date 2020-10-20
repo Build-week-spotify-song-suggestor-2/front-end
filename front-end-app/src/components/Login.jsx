@@ -1,66 +1,44 @@
 import React from "react";
-import { Button, Form, FormGroup } from 'reactstrap';
-import { axiosWithAuth } from '../api/axiosWithAuth'
+import { useForm } from 'react-hook-form'
+import { Button, Form, FormGroup } from 'reactstrap'
+import { postData } from '../actions/postAction'
 
-class Login extends React.Component {
-  state = {
-    credentials: {
-      username: "",
-      password: ""
-    }
-  };
+const Login = () => {
 
-  handleChange = (e) => {
-    this.setState({
-      credentials: {
-        ...this.state.credentials,
-        [e.target.name]: e.target.value
-      }
-    });
-  };
 
-  login = (e) => {
-    e.preventDefault();
-    axiosWithAuth()
-      .post("/login", this.state.credentials)
-      .then((res) => {
-        console.log('login: res: ', res);
-        localStorage.setItem("token", res.data.payload);
-        this.props.history.push("/user_page");
-      })
-      .catch((err) => {
-        if (err.response) {
-          console.error(
-            "Login.js: login failed: response from server: ",
-            err.response.data
-          );
-        } else {
-          console.error("Login.js: login failed: err: ", err);
-        }
-      });
-  };
+  const { register, handleSubmit, watch, errors } = useForm()
 
-  render() {
-    return (
+  handleSubmit = data => {
+    console.log('Login submit: data: ', data)
+    postData(data)
+  }
+
+  console.log(watch('username'))
+  console.log(watch('password'))
+
+  return (
+    
       <div>
-        <Form className='login' onSubmit={this.login}>
+        <Form className='login' onSubmit={handleSubmit}>
 
           <FormGroup>
             <input
+              placeholder='Username'
               type="text"
               name="username"
-              value={this.state.credentials.username}
-              onChange={this.handleChange}
+              ref={register({ required: true })}
             />
+            {errors.username && <span>Username is required</span>}
           </FormGroup>
 
           <FormGroup>
             <input
+              placeholder='Password'
               type="password"
               name="password"
-              value={this.state.credentials.password}
-              onChange={this.handleChange}
+              ref={register({ required: true })}
             />
+            {errors.password && <span>Password is required</span>}
           </FormGroup>
           <Button>Log in</Button>
         </Form>
@@ -70,6 +48,8 @@ class Login extends React.Component {
 
     );
   }
-}
+
+
+
 
 export default Login;

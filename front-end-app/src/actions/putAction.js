@@ -7,14 +7,14 @@ import {
 } from './actionTypes'
 
 
-const putData = data => dispatch => {
+export const putData = data => dispatch => {
 
   dispatch({ type: PUT_DATA_START });
 
   setTimeout(() => {
     
     axiosWithAuth()
-      .delete('')
+      .put('')
 
       .then(response => {
         const data = response.data.results;

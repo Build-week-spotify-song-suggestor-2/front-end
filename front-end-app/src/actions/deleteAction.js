@@ -7,7 +7,7 @@ import {
 } from './actionTypes'
 
 
-const deleteData = data => dispatch => {
+export const deleteData = data => dispatch => {
 
   dispatch({ type: DELETE_DATA_START });
 

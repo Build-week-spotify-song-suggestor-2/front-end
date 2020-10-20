@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import * as yup from "yup";
 
 export default function NewUser() {
+
+  
   // variable holding the default empty data
   const defaultUserData = { username: "", password: "" };
 

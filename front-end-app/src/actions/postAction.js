@@ -6,14 +6,14 @@ import {
 } from './actionTypes'
 
 
-const postData = data => dispatch => {
+export const postData = data => dispatch => {
 
   dispatch({ type: POST_DATA_START });
 
   setTimeout(() => {
     
     axiosWithAuth()
-      .POST('')
+      .post('url/url', data)
 
       .then(response => {
         const data = response.data.results;
