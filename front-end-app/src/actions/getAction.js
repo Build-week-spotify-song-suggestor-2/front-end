@@ -1,17 +1,17 @@
 import { axiosWithAuth } from '../api/axiosWithAuth';
 import axios from 'axios'
 import {
-  FETCH_DATA_START,
-  FETCH_DATA_SUCCESS,
-  FETCH_DATA_FAIL
+  GET_DATA_START,
+  GET_DATA_SUCCESS,
+  GET_DATA_FAIL
 } from './actionTypes'
 
 
 
-export const fetchDataWithAuth = () => dispatch => {
+export const getDataWithAuth = () => dispatch => {
 
 
-    dispatch({ type: FETCH_DATA_START });
+    dispatch({ type: GET_DATA_START });
 
     setTimeout(() => {
       
@@ -20,22 +20,21 @@ export const fetchDataWithAuth = () => dispatch => {
   
         .then(response => {
           const data = response.data.results;
-          dispatch({ type: FETCH_DATA_SUCCESS, payload: data })
+          dispatch({ type: GET_DATA_SUCCESS, payload: data })
         })
   
         .catch(error => {
           const errorMsg = error.message;
-          dispatch( { type: FETCH_DATA_FAIL, payload: errorMsg } )
+          dispatch( { type: GET_DATA_FAIL, payload: errorMsg } )
         })
     }, 1000)
 
   }
 
-  
-  export const fetchDataNoAuth = () => dispatch => {
+export const getDataNoAuth = () => dispatch => {
 
 
-    dispatch({ type: FETCH_DATA_START });
+    dispatch({ type: GET_DATA_START });
 
     setTimeout(() => {
       
@@ -44,12 +43,12 @@ export const fetchDataWithAuth = () => dispatch => {
   
         .then(response => {
           const data = response.data.results;
-          dispatch({ type: FETCH_DATA_SUCCESS, payload: data })
+          dispatch({ type: GET_DATA_SUCCESS, payload: data })
         })
   
         .catch(error => {
           const errorMsg = error.message;
-          dispatch( { type: FETCH_DATA_FAIL, payload: errorMsg } )
+          dispatch( { type: GET_DATA_FAIL, payload: errorMsg } )
         })
     }, 1000)
 
