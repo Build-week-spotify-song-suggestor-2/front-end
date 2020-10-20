@@ -75,7 +75,7 @@ export default function NewUser() {
               : "valid"
           }`}
         >
-          Username
+          Username: 
           <input
             type="text"
             id="username"
@@ -93,7 +93,7 @@ export default function NewUser() {
               : "valid"
           }`}
         >
-          Password
+          Password:
           <input
             type="password"
             id="password"
@@ -105,7 +105,7 @@ export default function NewUser() {
 
         <input type="submit" value="Log in" disabled={disableSubmit} />
       </form>
-
+ 
       {Object.keys(errors).length > 0 && (
         <div className="errors">
           {Object.keys(errors).map((key) => (
