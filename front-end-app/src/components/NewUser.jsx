@@ -1,5 +1,5 @@
 import React from "react";
-import { yupResolver } from '@hookform/resolvers/yup'
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Form, InputGroup, Button } from 'reactstrap'
 import { FormInput } from './FormInput'
 import { postData } from '../actions/postAction'

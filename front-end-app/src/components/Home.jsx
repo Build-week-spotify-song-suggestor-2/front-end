@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "./Nav";
 import SearchForm from "./SearchForm";
+
 import "../SCSS/Home.scss";
 
 const Home = () => {
@@ -20,7 +21,7 @@ const Home = () => {
 
           <div className="search-favorites-container">
             <div className="search-template">
-              <i className="fa fa-search"></i> <span>Find Music</span>
+              <i className="fas fa-search"></i> <span>Find Music</span>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut

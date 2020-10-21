@@ -21,7 +21,8 @@ const Nav = () => {
         <h1 className="title">Suggestify</h1>
         <div className="header-links-container">
           <div className="header-links">
-    
+                    <NavLink to="/Login">Login</NavLink>
+                    <NavLink to="/NewUser">Sign Up</NavLink>
                 <i onClick={toggleMenu} class="fas fa-user-circle"></i>
                 {menuStatus && (
                   <div style={{ position: "absolute" }}>
