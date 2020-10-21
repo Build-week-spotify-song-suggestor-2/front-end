@@ -5,16 +5,18 @@ import { FormInput } from './FormInput'
 import { postData } from '../actions/postAction'
 import { useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { connect } from 'react-redux'
 import { formSchema } from '../utilities/formSchema'
 
 
-const NewUser = () => {
+const NewUser = props => {
 
   const { push } = useHistory();
 
+  //add watch if you want to watch
   const { register, handleSubmit, watch, errors } = useForm({
     mode: 'onblur',
-    resolver: yupResolver(formSchema)
+    //resolver: yupResolver(formSchema)
   })
 
   //uncomment these if you want to watch input in console
@@ -22,39 +24,40 @@ const NewUser = () => {
   // console.log(watch(password))
 
 
-  const submitNewUser = async data => {
+  
+  const submitNewUser =  data => {
     console.log('NewUser Form: newUser data: ', data)
-    postData(data)
-    await push('/')//will replace path with a profile page once the component is built
+    props.postData(data, 'register')
+    push('/')//will replace path with a profile page once the component is built
   }
  
 
   return (
 
-  <div>
+  <div className='login'>
+
       <h3>Create Account</h3>
 
-    <Form className='form-container' onSubmit={handleSubmit(submitNewUser)} className='form'>
+    <Form onSubmit={handleSubmit(submitNewUser)} className='form'>
 
-      <InputGroup>
+      <InputGroup className='form'>
        <FormInput 
           type='text'
           id='username'
           name='username'
-          label='Username'
+          placeholder='Username'
           register={register}
           errors={errors.username}
         />
       </InputGroup>
 
-      <InputGroup>
+      <InputGroup className='form'>
         <FormInput 
           type='password'
           id='password'
           name='password'
-          label='Password'
+          placeholder='Password'
           register={register}
-          errors={errors.password}
         />
       </InputGroup>
       <Button>Create</Button>
@@ -64,6 +67,13 @@ const NewUser = () => {
   );
 }
 
-export default NewUser
+const mapStateToProps = state => {
+  return {
+    newUser: state.data
+  }
+}
+
+
+export default connect(mapStateToProps, { postData })(NewUser)
 
 

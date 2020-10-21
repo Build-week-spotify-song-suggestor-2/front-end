@@ -1,3 +1,11 @@
 .App {
   text-align: center;
 }
+
+.login {
+  margin: 0 auto;
+}
+
+.form {
+  margin: 0 auto !important;
+}

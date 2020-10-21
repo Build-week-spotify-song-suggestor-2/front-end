@@ -10,7 +10,7 @@ export const axiosWithAuth = () => {
       authorization: token
     },
 
-    baseURL: `http://localhost:4500`
+    baseURL: `https://salty-atoll-28049.herokuapp.com/api/auth`
 
   })
 }

@@ -13,7 +13,7 @@ export const deleteData = data => dispatch => {
   setTimeout(() => {
     
     axiosWithAuth()
-      .delete('')
+      .delete(`/delete`)
 
       .then(response => {
         const data = response.data.results;

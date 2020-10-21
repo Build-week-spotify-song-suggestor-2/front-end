@@ -1,3 +1,24 @@
 //Header and Footer
 @import "./Header.scss";
 @import "./Home.scss";
+
+
+#root > div > div > form > button {
+  margin-left: none;
+  margin-top: 1rem;
+}
+
+
+#root > div > div > form > div.form.input-group > label {
+  margin-left: 40% !important;
+}
+
+.login {
+  margin-top: 3rem;
+}
+
+#root > div > div > form {
+  margin: 0 auto;
+  margin-top: 3rem;
+  max-width: 75%;
+}

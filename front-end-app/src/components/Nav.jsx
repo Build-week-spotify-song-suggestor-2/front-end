@@ -15,15 +15,15 @@ const Nav = () => {
       <div className="header-top">
         <div className="image-container">
           <Link to="/">
-            <img className="logo" src={logo} />
+            <img className="logo" src={logo} alt='a thing' />
           </Link>
         </div>
         <h1 className="title">Suggestify</h1>
         <div className="header-links-container">
           <div className="header-links">
                     <NavLink to="/Login">Login</NavLink>
-                    <NavLink to="/NewUser">Sign Up</NavLink>
-                <i onClick={toggleMenu} class="fas fa-user-circle"></i>
+                    <NavLink to="/new_user">Sign Up</NavLink>
+                <i onClick={toggleMenu} className="fas fa-user-circle"></i>
                 {menuStatus && (
                   <div style={{ position: "absolute" }}>
                     <div className="links-wrapper">

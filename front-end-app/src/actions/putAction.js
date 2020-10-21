@@ -14,7 +14,7 @@ export const putData = data => dispatch => {
   setTimeout(() => {
     
     axiosWithAuth()
-      .put('')
+      .put(`/update`)
 
       .then(response => {
         const data = response.data.results;

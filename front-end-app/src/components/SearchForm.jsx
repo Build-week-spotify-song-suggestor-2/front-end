@@ -8,12 +8,13 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 const SearchForm = props => {
 
-  const { register, handleSubmit, watch, errors } = useForm({
+  //add watch if you want to watch
+  const { register, handleSubmit, errors } = useForm({
     mode: 'onBlur',
     resolver: yupResolver(formSchema)
   })
 
-  //uncomment this if you want to watch text in console
+  //uncomment this if you want to watch text in console and add watch above
   //console.log(watch('search'))
 
   const search = data => {
@@ -27,11 +28,9 @@ const SearchForm = props => {
 
       <FormInput
         className="searchBar"
-        placeholder="Search Here..."
+        placeholder="Search"
         name="search"
         type="text"
-        label='search'
-        ref={register({ required: true })}
         errors={errors.search}
       />
       
