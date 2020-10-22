@@ -1,6 +1,5 @@
 import React from "react";
 import Nav from "./Nav";
-import SearchForm from "./SearchForm";
 
 import "../SCSS/Home.scss";
 
@@ -14,7 +13,6 @@ const Home = () => {
             <div className="home-image-inner-container">
               <h3 className="subtitle">Find New Music...</h3>
               <div className="search-SearchForm">
-                <SearchForm />
               </div>
             </div>
           </div>

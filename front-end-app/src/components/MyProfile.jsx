@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { axiosWithAuth } from "../axiosWithAuth";
+import { axiosWithAuth } from "../api/axiosWithAuth";
 
 import Nav from "./Nav";
 
 const Profile = () => {
+
+
   const [favs, setFavs] = useState([]);
 
   const user = localStorage.getItem("username");

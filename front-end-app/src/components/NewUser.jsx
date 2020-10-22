@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Form, InputGroup, Button } from 'reactstrap'
 import { FormInput } from './FormInput'
 import { postData } from '../actions/postAction'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { connect } from 'react-redux'
 import { formSchema } from '../utilities/formSchema'
@@ -12,6 +12,7 @@ import { formSchema } from '../utilities/formSchema'
 const NewUser = props => {
 
   const { push } = useHistory();
+  const { id } = useParams()
 
   //add watch if you want to watch
   const { register, handleSubmit, watch, errors } = useForm({

@@ -4,17 +4,21 @@ import { Button, Form, InputGroup } from 'reactstrap'
 import { postData } from '../actions/postAction'
 import { FormInput } from './FormInput'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 const Login = props => {
+
+
+  const { push } = useHistory()
 
   //add watch if you want to watch
   const { register, handleSubmit, errors } = useForm()
 
-  const login = data => {
+  const login = async data => {
 
     console.log('Login submit: data: ', data)
     props.postData(data, 'login')
-
+    await push('/profile')
   }
 
   //uncomment these if you want to watch input in console (need watch above)
