@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../api/axiosWithAuth";
+import SearchForm from '../components/SearchForm'
 
 import Nav from "./Nav";
 
@@ -27,7 +28,7 @@ const Profile = () => {
   return (
     <div className="profile-container">
       <Nav />
-      
+      <SearchForm />
       <div className="profile-body">
         <h1>{user}'s Profile Page</h1>
         <div className="profile-info">
