@@ -14,11 +14,13 @@ const Login = props => {
   //add watch if you want to watch
   const { register, handleSubmit, errors } = useForm()
 
-  const login = async data => {
+  const login = data => {
 
     console.log('Login submit: data: ', data)
     props.postData(data, 'login')
-    await push('/profile')
+    setTimeout(() => {
+      push(`/profile/${data.username}`)
+    }, 100)
   }
 
   //uncomment these if you want to watch input in console (need watch above)
