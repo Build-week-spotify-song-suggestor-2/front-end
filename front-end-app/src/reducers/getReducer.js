@@ -7,7 +7,8 @@ import {
 const initialState = {
   loading: false,
   error: '',
-  data: []
+  userData: [],
+  songData: []
 }
 
 export const getReducer = ( state = initialState, action ) => {
@@ -24,7 +25,7 @@ export const getReducer = ( state = initialState, action ) => {
       return{
         ...state,
         loading: false,
-        data: action.payload,
+        userData: action.payload,
         error: ''
       }
 

@@ -1,31 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { axiosWithAuth } from "../api/axiosWithAuth";
-
+import { useParams } from 'react-router-dom'
+import SearchForm from '../components/SearchForm'
+import { getData } from '../actions/getAction'
+import { connect } from 'react-redux'
 import Nav from "./Nav";
 import ArtistsSearch from "./Song Suggestions/ArtistsSearch"
 
-const Profile = () => {
+const Profile = props => {
 
+  const { id } = useParams()
 
-  const [favs, setFavs] = useState([]);
+  const showProfile = () => {
+    props.getData(id)
+  }
 
-  const user = localStorage.getItem("username");
+  useEffect(() => showProfile(), []) 
 
-  
-//   useEffect(() => {
-//     axiosWithAuth()
-//       .get("")
-//       .then(response => {
-//         console.log(response);
-//         setFavs(response.data);
-//       })
-//       .catch(error => {
-//         console.log(error);
-//       });
-//   }, [setFavs]);
-//   console.log("favorite songs", favs);
 
   return (
+
     <div className="profile-container">
       <Nav />
       <ArtistsSearch />

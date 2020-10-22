@@ -23,7 +23,7 @@ const Nav = () => {
           <div className="header-links">
                     <NavLink to="/Login">Login</NavLink>
                     <NavLink to="/new_user">Sign Up</NavLink>
-                    <NavLink to='/profile'>Profile</NavLink>
+                    <NavLink to='/profile/:id'>Profile</NavLink>
                 <i onClick={toggleMenu} className="fas fa-user-circle"></i>
                 {menuStatus && (
                   <div style={{ position: "absolute" }}>

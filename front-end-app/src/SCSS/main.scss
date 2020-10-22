@@ -5,7 +5,8 @@
 
 #root > div > div > form > button {
   margin-left: none;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 
@@ -21,4 +22,8 @@
   margin: 0 auto;
   margin-top: 3rem;
   max-width: 75%;
+}
+
+#root > div > div > form > input {
+  height: 35px;
 }
