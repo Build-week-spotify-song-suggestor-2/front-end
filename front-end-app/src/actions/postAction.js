@@ -27,7 +27,7 @@ export const postData = (data, type) => dispatch => {
 
         }
 
-        if(type === 'register' && response.statusText === 'OK'){
+        if(type === 'register' && response.status === 201 && response.statusText === 'Created'){
           const data = response.data
           dispatch({ type: POST_DATA_SUCCESS, payload: data })
         }

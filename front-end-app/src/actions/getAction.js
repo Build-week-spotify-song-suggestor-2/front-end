@@ -8,7 +8,7 @@ import {
 
 
 
-export const getDataWithAuth = () => dispatch => {
+export const getData = data => dispatch => {
 
 
     dispatch({ type: GET_DATA_START });
@@ -16,9 +16,11 @@ export const getDataWithAuth = () => dispatch => {
     setTimeout(() => {
       
       axiosWithAuth()
-        .get('')
+
+        .get(`https://salty-atoll-28049.herokuapp.com/api/users/${data}`)
   
         .then(response => {
+          console.log('getAction: getData: response: ', response)
           const data = response.data.results;
           dispatch({ type: GET_DATA_SUCCESS, payload: data })
         })

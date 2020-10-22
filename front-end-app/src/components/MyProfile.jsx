@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { getDataWithAuth } from '../actions/getAction'
 import { useParams } from 'react-router-dom'
 import SearchForm from '../components/SearchForm'
-
+import { getData } from '../actions/getAction'
+import { connect } from 'react-redux'
 import Nav from "./Nav";
 
-const Profile = () => {
-
-
-  const [favs, setFavs] = useState([]);
+const MyProfile = props => {
 
   const { id } = useParams()
 
+  const showProfile = () => {
+    props.getData(id)
+  }
+
+  useEffect(() => showProfile(), []) 
+
+
   return (
-    
+
     <div className="profile-container">
       <Nav />
       <h3>{`Welcome ${id}`}!</h3>
@@ -35,4 +39,12 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+const mapStateToProps = state => {
+
+  return {
+    profile: state.data
+  }
+
+}
+
+export default connect(mapStateToProps, {getData})(MyProfile);

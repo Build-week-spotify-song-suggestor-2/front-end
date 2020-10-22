@@ -8,9 +8,7 @@ export const axiosWithAuth = () => {
 
     headers: {
       authorization: token
-    },
-
-    baseURL: `https://salty-atoll-28049.herokuapp.com/api/auth`
+    }
 
   })
 }
