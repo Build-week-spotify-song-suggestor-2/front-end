@@ -13,6 +13,7 @@ const Profile = () => {
   const { id } = useParams()
 
   return (
+    
     <div className="profile-container">
       <Nav />
       <h3>{`Welcome ${id}`}!</h3>
