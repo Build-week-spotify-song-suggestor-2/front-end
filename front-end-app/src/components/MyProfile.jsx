@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../api/axiosWithAuth";
 
 import Nav from "./Nav";
+import ArtistsSearch from "./Song Suggestions/ArtistsSearch"
 
 const Profile = () => {
 
@@ -27,28 +28,8 @@ const Profile = () => {
   return (
     <div className="profile-container">
       <Nav />
+      <ArtistsSearch />
       
-      <div className="profile-body">
-        <h1>{user}'s Profile Page</h1>
-        <div className="profile-info">
-          <i class="fas fa-id-card"></i>
-        </div>
-
-        <div className="profile-favorite-songs">
-          <h1> Username: {user} </h1>
-          <h3> Favorite Tracks:</h3>
-          <ul>
-            {/* {favs.map(fav => {
-              return (
-                <li>
-                  {" "}
-                  {fav.track_name} by {fav.artist_name} 
-                </li>
-              );
-            })} */}
-          </ul>
-        </div>
-      </div>
       <footer>
         <div className="footer-content">
           <p>Suggestify Est 2020</p>
@@ -59,3 +40,5 @@ const Profile = () => {
 };
 
 export default Profile;
+
+
