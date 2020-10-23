@@ -4,13 +4,14 @@ import './SCSS/main.scss'
 import App from './App';
 import { BrowserRouter as Router} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { applyMiddleware, createStore } from 'redux'
+import { applyMiddleware, createStore, compose } from 'redux'
 import thunk from 'redux-thunk'
-import { rootReducer } from './reducers/index'
+import {  rootReducer } from './reducers/index'
 import { Provider } from 'react-redux'
 import './App.css'
 
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Router>

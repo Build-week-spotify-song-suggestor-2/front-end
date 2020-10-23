@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux'
 import { deleteReducer } from './deleteReducer'
-import { getReducer } from './getReducer'
+import { songReducer } from './songReducer'
 import { putReducer } from './putReducer'
-import { postReducer } from './postReducer'
+import { loginReducer } from './loginReducer'
 
 
 export const rootReducer = combineReducers({
 
-  songs: getReducer,
+  songs: songReducer,
   delete: deleteReducer,
   newUser: putReducer,
-  login: postReducer
+  login: loginReducer
 
 })

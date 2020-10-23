@@ -2,16 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom'
 import SearchForm from '../components/SearchForm'
 import { getData } from '../actions/getAction'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Nav from "./Nav";
-import ArtistsSearch from "./Song Suggestions/ArtistsSearch"
+import Songs from '../components/Songs'
 
 const Profile = props => {
 
   const { id } = useParams()
 
+  
+  const dispatch = useDispatch()
+
   const showProfile = () => {
-    props.getData(id)
+    dispatch(getData(id))
   }
 
   useEffect(() => showProfile(), []) 
@@ -21,7 +24,11 @@ const Profile = props => {
 
     <div className="profile-container">
       <Nav />
-      <ArtistsSearch />
+
+    <h2 className='welcome'>{`Welcome ${id}!`}</h2>
+
+      <SearchForm />
+      <Songs />
       
       <footer>
         <div className="footer-content">
@@ -31,6 +38,8 @@ const Profile = props => {
     </div>
   );
 };
+
+
 
 export default Profile;
 

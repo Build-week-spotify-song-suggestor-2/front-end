@@ -27,3 +27,45 @@
 #root > div > div > form > input {
   height: 35px;
 }
+
+.card {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 250px;
+  height: 300px;
+  background-color: black !important;
+  color: azure;
+}
+
+.cardButton {
+  position: absolute;
+  bottom: 3%;
+  left: 25%;
+}
+
+.button {
+  margin-bottom: 1rem;
+}
+
+.form {
+  margin: 0 auto;
+}
+
+#root > div > div > div:nth-child(3) > form > div.form.input-group > input {
+  margin: 0 auto;
+  margin-bottom: .5rem;
+}
+
+#root > div > div > div:nth-child(3) > form > div:nth-child(2) > input {
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+.welcome {
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+}
+
+.header {
+  background-color: #1DB954 !important;
+}

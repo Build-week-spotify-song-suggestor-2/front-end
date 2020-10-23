@@ -5,7 +5,7 @@ import { FormInput } from './FormInput'
 import { postData } from '../actions/postAction'
 import { useHistory, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { formSchema } from '../utilities/formSchema'
 
 
@@ -24,11 +24,12 @@ const NewUser = props => {
   // console.log(watch(username))
   // console.log(watch(password))
 
+  const dispatch = useDispatch();
 
   
   const submitNewUser =  data => {
     console.log('NewUser Form: newUser data: ', data)
-    props.postData(data, 'register')
+    dispatch(postData(data, 'register'))
     push('/')//will replace path with a profile page once the component is built
   }
  
@@ -68,13 +69,8 @@ const NewUser = props => {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    newUser: state.data
-  }
-}
 
 
-export default connect(mapStateToProps, { postData })(NewUser)
+export default NewUser
 
 
