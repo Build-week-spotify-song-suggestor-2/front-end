@@ -1,0 +1,28 @@
+
+
+.primary-list-container {
+  padding: 0.5rem;
+  flex-grow: 0;
+  width: 33%;
+  .search-bar,
+  .filter-bar {
+    gap: 0;
+    button[type="submit"] {
+      justify-self: stretch;
+    }
+  }
+  .search {
+    justify-content: center;
+    gap: 0.25rem;
+    color: #fdfdfc;
+  }
+  border-top-right-radius: 0.5rem;
+  background-color: #191414;
+  padding: 0.25rem;
+  button {
+    border: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

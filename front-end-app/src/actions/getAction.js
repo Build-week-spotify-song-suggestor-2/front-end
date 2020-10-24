@@ -1,4 +1,3 @@
-import { axiosWithAuth } from '../api/axiosWithAuth';
 import axios from 'axios'
 import {
   GET_DATA_START,
@@ -8,40 +7,19 @@ import {
 
 
 
-export const getDataWithAuth = () => dispatch => {
+export const getData = (data, type) => dispatch => {
 
 
     dispatch({ type: GET_DATA_START });
 
-    setTimeout(() => {
-      
-      axiosWithAuth()
-        .get('')
-  
-        .then(response => {
-          const data = response.data.results;
-          dispatch({ type: GET_DATA_SUCCESS, payload: data })
-        })
-  
-        .catch(error => {
-          const errorMsg = error.message;
-          dispatch( { type: GET_DATA_FAIL, payload: errorMsg } )
-        })
-    }, 1000)
+    if (type === 'users'){
 
-  }
-
-export const getDataNoAuth = () => dispatch => {
-
-
-    dispatch({ type: GET_DATA_START });
-
-    setTimeout(() => {
-      
       axios
-        .get('')
+
+        .get(`https://salty-atoll-28049.herokuapp.com/api/users/${data}`)
   
         .then(response => {
+          console.log('getAction: getData: users: response: ', response)
           const data = response.data.results;
           dispatch({ type: GET_DATA_SUCCESS, payload: data })
         })
@@ -50,7 +28,11 @@ export const getDataNoAuth = () => dispatch => {
           const errorMsg = error.message;
           dispatch( { type: GET_DATA_FAIL, payload: errorMsg } )
         })
-    }, 1000)
+
+    }
+
+    
+   
 
   }
 

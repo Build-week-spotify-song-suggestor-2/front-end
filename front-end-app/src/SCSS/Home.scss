@@ -41,12 +41,14 @@
           }
   
           .search-form {
+            margin: 0 auto;
             align-self: flex-end;
             @media (max-width: 800px) {
               align-self: inherit;
             }
             form {
               .searchBar {
+                margin: 0 auto;
                 width: 50rem;
                 height: 6rem;
                 background: #f8f8f8;

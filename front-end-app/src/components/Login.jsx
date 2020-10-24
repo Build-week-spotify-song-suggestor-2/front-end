@@ -3,50 +3,61 @@ import { useForm } from 'react-hook-form'
 import { Button, Form, InputGroup } from 'reactstrap'
 import { postData } from '../actions/postAction'
 import { FormInput } from './FormInput'
+import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
-const Login = () => {
+const Login = props => {
 
 
-  const { register, handleSubmit, watch, errors } = useForm()
+  const { push } = useHistory()
+
+  //add watch if you want to watch
+  const { register, handleSubmit, errors } = useForm()
 
   const login = data => {
+
     console.log('Login submit: data: ', data)
-    postData(data)
+    props.postData(data, 'login')
+    setTimeout(() => {
+      push(`/profile/${data.username}`)
+    }, 100)
   }
 
-  //uncomment these if you want to watch input in console
+  //uncomment these if you want to watch input in console (need watch above)
   // console.log(watch('username'))
   // console.log(watch('password'))
 
   return (
     
-    <div>
+    <div className='login'>
 
-      <Form className='login' onSubmit={handleSubmit(login)}>
+      <h3>User Login</h3>
 
-        <InputGroup>
+      <Form onSubmit={handleSubmit(login)}>
+
+        <InputGroup className='form'>
           <FormInput 
             type='text'
             id='username'
             name='username'
-            label='Username'
+            placeholder='Username'
             register={register}
             errors={errors.username}
           />
         </InputGroup>
 
-        <InputGroup>
+        <InputGroup className='form'>
           <FormInput 
             type='password'
             id='password'
             name='password'
-            label='Password'
+            placeholder='Password'
             register={register}
             errors={errors.password}
           />
         </InputGroup>
 
-        <Button>Log in</Button>
+        <Button className='button'>Log in</Button>
 
       </Form>
      </div>
@@ -56,7 +67,13 @@ const Login = () => {
     );
   }
 
+  const mapStateToProps = state => {
+    return {
+      login: state.data
+    }
+  }
 
 
 
-export default Login;
+
+export default connect(mapStateToProps, { postData }) (Login);

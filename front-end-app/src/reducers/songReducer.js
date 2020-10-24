@@ -1,38 +1,39 @@
 import { 
-  GET_DATA_START, 
-  GET_DATA_SUCCESS, 
-  GET_DATA_FAIL,
+  SONG_DATA_START, 
+  SONG_DATA_SUCCESS, 
+  SONG_DATA_FAIL,
 } from '../actions/actionTypes'
 
 const initialState = {
+  
   loading: false,
   error: '',
-  data: []
+  songData: [],
+
 }
 
-export const getReducer = ( state = initialState, action ) => {
+export const songReducer = ( state = initialState, action ) => {
 
   switch ( action.type ){
 
-    case GET_DATA_START:
+    case SONG_DATA_START:
       return {
         ...state,
         loading: true
       }
 
-    case GET_DATA_SUCCESS:
+    case SONG_DATA_SUCCESS:
       return{
         ...state,
         loading: false,
-        data: action.payload,
+        songData: action.payload,
         error: ''
       }
 
-    case GET_DATA_FAIL:
+    case SONG_DATA_FAIL:
       return {
         ...state,
         loading: false,
-        data: [],
         error: action.payload
       }
 
